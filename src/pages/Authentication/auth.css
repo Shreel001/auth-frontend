@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, Roboto, Inter, sans-serif;
+    background: radial-gradient(circle at 50% 10%, #2e2e2e 0%, #2f2f2f 35%, #1c1c1c 100%);
+    color: #fff;
+    padding: 25px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.auth-body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20vh;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 450px;
+    background: #323232;
+    border: 1px solid #404040;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #fff;
+}
+
+.auth-form p {
+    text-align: center;
+    color: #ffffff;
+}
+
+.auth-form > div {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+    padding: 12px 16px;
+    background: #2e2e2e;
+    border: 1px solid #404040;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    transition: 0.3s ease;
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+    outline: none;
+    border-color: #065F46;
+    box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.2);
+}
+
+.auth-form input::placeholder {
+    color: #666;
+}
+
+.auth-form select option {
+    background: #2e2e2e;
+    color: #ffffff;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 14px;
+    background: #065F46;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-form button:hover {
+    background: #047857;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(6, 95, 70, 0.4);
+}
+
+.auth-form button:active {
+    transform: translateY(0);
+}
+
+.company-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.company-logo img {
+    height: 90px;
+}
+
+.login-link {
+    margin-top: 30px;
+    margin-bottom: 0px !important;
+}
+
+.login-link a:hover {
+    color: #125dbe;
+}
+
+.login-link a:visited {
+    color: #d5e038;
+}
+
+.trademark-footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    margin-bottom: 25px;
+    font-size: larger;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: large;
+    color: rgb(255, 75, 75);
+}
