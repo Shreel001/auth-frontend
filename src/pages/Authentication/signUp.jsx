@@ -93,7 +93,6 @@ export default function UserSignUpForm() {
                 <option value="ACCOUNT MANAGER">ACCOUNT MANAGER</option>
                 <option value="ADMIN">ADMIN</option>
                 <option value="API USER">API USER</option>
-                <!-- ... rest of options ... -->
               </select>
             </div>
             
