@@ -84,7 +84,7 @@ export default function UserLoginForm() {
       <p className="message">{message}</p>
 
       <div className="trademark-footer">
-        © 2025 Credex. All rights reserved.
+        © 2025 Credex. All rights reserved
       </div>
     </div>
   );
