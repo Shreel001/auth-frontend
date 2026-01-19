@@ -36,5 +36,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/reactApp:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/reactApp:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/react-app:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/react-app:${{ github.sha }}
