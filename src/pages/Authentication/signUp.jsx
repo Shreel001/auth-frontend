@@ -23,15 +23,16 @@ export default function UserSignUpForm() {
         body: JSON.stringify(body),
       });
 
+      const text = await response.text(); // 👈 always read raw text first
+
       if (!response.ok) {
-        const errData = await response.json();
-        setMessage(errData.message || "Operation failed");
+        setMessage(text); // FULL backend error
         return;
-      }else{
-        setMessage("Signup successful!");
       }
+
+      setMessage("Signup successful!");
     } catch (err) {
-      setMessage("Error: " + err.message);
+      setMessage("Network error: " + err.message);
     }
   };
 
@@ -83,7 +84,7 @@ export default function UserSignUpForm() {
             <button type="submit">Sign Up</button>
 
             <div className="login-link">
-              <p>Already have an account ? <span><b><a href="http://localhost:3001/user/login">Login</a></b></span></p>
+              <p>Already have an account ? <span><b><a href="http://localhost:3000/user/login">Login</a></b></span></p>
             </div>
         </form>
       </div>

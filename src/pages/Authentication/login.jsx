@@ -1,45 +1,38 @@
 import { useState } from "react";
 import "./auth.css";
 import { useNavigate } from "react-router-dom";
-import logo from "../../media/logo4.png"
+import logo from "../../media/logo4.png";
 
 export default function UserLoginForm() {
-  const [isLogin, setIslogin] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "http://localhost:8080/auth/login";
-
-    const body = { username, password};
-
     try {
-      const response = await fetch(url, {
+      const response = await fetch("http://localhost:8080/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify({ username, password }),
       });
 
+      const data = await response.json(); // read once
+
       if (!response.ok) {
-        const errData = await response.json();
-        setMessage(errData.message || "Operation failed");
+        setMessage(data.message || "Operation failed");
         return;
-      }else{
-        setIslogin(true)
       }
 
-      const data = await response.json();
-      if (isLogin) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data));
-        navigate("/dashboard");
-      }
-      setMessage(isLogin ? "Login successful!" : "Signup successful!");
+      // store token
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data));
+
+      navigate("/dashboard");
+      setMessage("Login successful!");
     } catch (err) {
       setMessage("Error: " + err.message);
     }
@@ -48,30 +41,50 @@ export default function UserLoginForm() {
   return (
     <div className="auth-body">
       <div className="company-logo">
-          <img src={logo} alt="A beautiful landscape"></img>
+        <img src={logo} alt="Credex Logo" />
       </div>
-      <div className="auth-container">
-          <form autocomplete="off" className="auth-form login" onSubmit={handleSubmit}>
-            <div>
-                <label for="username" onChange={(e) => setUsername(e.target.value)} value={username}>Username:</label>
-                <input type="text" id="username" name="username" required/>
-            </div>
-            
-            <div>
-                <label for="password" onChange={(e) => setPassword(e.target.value)} value={password}>Password:</label>
-                <input type="password" id="password" name="password" required/>
-            </div>
-            
-            <button type="submit">Login</button>
 
-            <div className="login-link">
-              <p>New to Credex ? <span><b><a href="http://localhost:3001/user/signup">Create account</a></b></span></p>
-            </div>
+      <div className="auth-container">
+        <form autoComplete="off" className="auth-form login" onSubmit={handleSubmit}>
+          
+          <div>
+            <label htmlFor="username">Username:</label>
+            <input 
+              type="text" 
+              id="username" 
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input 
+              type="password" 
+              id="password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit">Login</button>
+
+          <div className="login-link">
+            <p>
+              New to Credex?{" "}
+              <b><a href="/user/signup">Create account</a></b>
+            </p>
+          </div>
+
         </form>
       </div>
+
       <p className="message">{message}</p>
-      <div class="trademark-footer">
-          © 2025 Credex. All rights reserved.
+
+      <div className="trademark-footer">
+        © 2025 Credex. All rights reserved.
       </div>
     </div>
   );

@@ -123,8 +123,8 @@ body {
     margin-bottom: 0px !important;
 }
 
-.login-link a:hover {
-    color: #125dbe;
+.login-link a{
+    color: #43bf9c;
 }
 
 .login-link a:visited {
